@@ -31,17 +31,17 @@ public class FPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        JBTN_QuitarProducto = new rojeru_san.RSButtonRiple();
         jPanel4 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
+        JBTN_QuitarProducto1 = new rojeru_san.RSButtonRiple();
         jPanel9 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        JBTN_QuitarProducto2 = new rojeru_san.RSButtonRiple();
         jPanel5 = new javax.swing.JPanel();
-        jButton9 = new javax.swing.JButton();
+        JBTN_QuitarProducto3 = new rojeru_san.RSButtonRiple();
         jPanel6 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
+        JBTN_QuitarProducto4 = new rojeru_san.RSButtonRiple();
         jPanel8 = new javax.swing.JPanel();
-        jButton11 = new javax.swing.JButton();
+        JBTN_QuitarProducto5 = new rojeru_san.RSButtonRiple();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,16 +83,20 @@ public class FPrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3);
 
-        jButton3.setBackground(new java.awt.Color(34, 41, 50));
-        jButton3.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Default.png"))); // NOI18N
-        jButton3.setText("Inicio");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setPreferredSize(new java.awt.Dimension(160, 40));
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Hoover.png"))); // NOI18N
-        jButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Selected.png"))); // NOI18N
-        jPanel2.add(jButton3);
+        JBTN_QuitarProducto.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_QuitarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_home.png"))); // NOI18N
+        JBTN_QuitarProducto.setText("Inicio");
+        JBTN_QuitarProducto.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_QuitarProducto.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_QuitarProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_QuitarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_QuitarProducto.setPreferredSize(new java.awt.Dimension(160, 40));
+        JBTN_QuitarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_QuitarProductoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTN_QuitarProducto);
 
         jPanel4.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -109,16 +113,20 @@ public class FPrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4);
 
-        jButton8.setBackground(new java.awt.Color(0, 86, 166));
-        jButton8.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Default.png"))); // NOI18N
-        jButton8.setText("Venta");
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setPreferredSize(new java.awt.Dimension(160, 40));
-        jButton8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Hoover.png"))); // NOI18N
-        jButton8.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Selected.png"))); // NOI18N
-        jPanel2.add(jButton8);
+        JBTN_QuitarProducto1.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_QuitarProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/icono_venta.png"))); // NOI18N
+        JBTN_QuitarProducto1.setText("Venta");
+        JBTN_QuitarProducto1.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_QuitarProducto1.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_QuitarProducto1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_QuitarProducto1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_QuitarProducto1.setPreferredSize(new java.awt.Dimension(160, 40));
+        JBTN_QuitarProducto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_QuitarProducto1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTN_QuitarProducto1);
 
         jPanel9.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -135,16 +143,20 @@ public class FPrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel9);
 
-        jButton4.setBackground(new java.awt.Color(0, 86, 166));
-        jButton4.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Default.png"))); // NOI18N
-        jButton4.setText("Clinica");
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setPreferredSize(new java.awt.Dimension(160, 40));
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Hoover.png"))); // NOI18N
-        jButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Selected.png"))); // NOI18N
-        jPanel2.add(jButton4);
+        JBTN_QuitarProducto2.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_QuitarProducto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/icono_Clinica.png"))); // NOI18N
+        JBTN_QuitarProducto2.setText("Clinica");
+        JBTN_QuitarProducto2.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_QuitarProducto2.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_QuitarProducto2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_QuitarProducto2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_QuitarProducto2.setPreferredSize(new java.awt.Dimension(160, 40));
+        JBTN_QuitarProducto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_QuitarProducto2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTN_QuitarProducto2);
 
         jPanel5.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -161,16 +173,20 @@ public class FPrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5);
 
-        jButton9.setBackground(new java.awt.Color(0, 86, 166));
-        jButton9.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Default.png"))); // NOI18N
-        jButton9.setText("Usuarios");
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setPreferredSize(new java.awt.Dimension(160, 40));
-        jButton9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Hoover.png"))); // NOI18N
-        jButton9.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Selected.png"))); // NOI18N
-        jPanel2.add(jButton9);
+        JBTN_QuitarProducto3.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_QuitarProducto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/icono_users.png"))); // NOI18N
+        JBTN_QuitarProducto3.setText("Usuarios");
+        JBTN_QuitarProducto3.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_QuitarProducto3.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_QuitarProducto3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_QuitarProducto3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_QuitarProducto3.setPreferredSize(new java.awt.Dimension(160, 40));
+        JBTN_QuitarProducto3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_QuitarProducto3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTN_QuitarProducto3);
 
         jPanel6.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -187,16 +203,20 @@ public class FPrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel6);
 
-        jButton10.setBackground(new java.awt.Color(0, 86, 166));
-        jButton10.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Default.png"))); // NOI18N
-        jButton10.setText("Almacen");
-        jButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton10.setPreferredSize(new java.awt.Dimension(160, 40));
-        jButton10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Hoover.png"))); // NOI18N
-        jButton10.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Selected.png"))); // NOI18N
-        jPanel2.add(jButton10);
+        JBTN_QuitarProducto4.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_QuitarProducto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/icono_almacen.png"))); // NOI18N
+        JBTN_QuitarProducto4.setText("Almacen");
+        JBTN_QuitarProducto4.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_QuitarProducto4.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_QuitarProducto4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_QuitarProducto4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_QuitarProducto4.setPreferredSize(new java.awt.Dimension(160, 40));
+        JBTN_QuitarProducto4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_QuitarProducto4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTN_QuitarProducto4);
 
         jPanel8.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -213,16 +233,20 @@ public class FPrincipal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel8);
 
-        jButton11.setBackground(new java.awt.Color(34, 41, 50));
-        jButton11.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Default.png"))); // NOI18N
-        jButton11.setText("Salir");
-        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton11.setPreferredSize(new java.awt.Dimension(160, 40));
-        jButton11.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Hoover.png"))); // NOI18N
-        jButton11.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Selected.png"))); // NOI18N
-        jPanel2.add(jButton11);
+        JBTN_QuitarProducto5.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_QuitarProducto5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_Exit.png"))); // NOI18N
+        JBTN_QuitarProducto5.setText("Salir");
+        JBTN_QuitarProducto5.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_QuitarProducto5.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_QuitarProducto5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_QuitarProducto5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_QuitarProducto5.setPreferredSize(new java.awt.Dimension(160, 40));
+        JBTN_QuitarProducto5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_QuitarProducto5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(JBTN_QuitarProducto5);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 680));
 
@@ -325,6 +349,30 @@ public class FPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JBTN_QuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProductoActionPerformed
+
+    }//GEN-LAST:event_JBTN_QuitarProductoActionPerformed
+
+    private void JBTN_QuitarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBTN_QuitarProducto1ActionPerformed
+
+    private void JBTN_QuitarProducto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBTN_QuitarProducto2ActionPerformed
+
+    private void JBTN_QuitarProducto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBTN_QuitarProducto3ActionPerformed
+
+    private void JBTN_QuitarProducto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBTN_QuitarProducto4ActionPerformed
+
+    private void JBTN_QuitarProducto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBTN_QuitarProducto5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -362,13 +410,13 @@ public class FPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojeru_san.RSButtonRiple JBTN_QuitarProducto;
+    private rojeru_san.RSButtonRiple JBTN_QuitarProducto1;
+    private rojeru_san.RSButtonRiple JBTN_QuitarProducto2;
+    private rojeru_san.RSButtonRiple JBTN_QuitarProducto3;
+    private rojeru_san.RSButtonRiple JBTN_QuitarProducto4;
+    private rojeru_san.RSButtonRiple JBTN_QuitarProducto5;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
