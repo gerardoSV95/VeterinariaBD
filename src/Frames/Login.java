@@ -192,14 +192,26 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        Object empleado[];
         try {
+            empleado = new Object[9];
             String consulta = " SELECT * FROM EMPLEADO WHERE USUARIO= '"+JTF_Usuario.getText()+"' AND CONTRASEÑA= '"+JPF_Contrasena.getText()+"'";//FR122011    
-            PreparedStatement ps = conexion.conecta.prepareStatement(consulta);                                                                   //ABCD12            
+            PreparedStatement ps = conexion.conecta.prepareStatement(consulta);                                                                   //ABCD12                        
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 JOptionPane.showMessageDialog(rootPane, "Acceso Correcto.");
-                FPrincipal fP = new FPrincipal();
+                empleado[0] = rs.getInt(1);
+                empleado[1] = rs.getString(2);
+                empleado[2] = rs.getString(3);
+                empleado[3] = rs.getString(4);
+                empleado[4] = rs.getDate(5);
+                empleado[5] = rs.getString(6);
+                empleado[6] = rs.getString(7);
+                empleado[7] = rs.getString(8);
+                empleado[8] = rs.getInt(9);
+                String usuario = JTF_Usuario.getText();
+                String nombre = empleado[1] +" "+  empleado[2];
+                FPrincipal fP = new FPrincipal(nombre, usuario);
                 fP.setVisible(true);
                 this.dispose();
             }else{

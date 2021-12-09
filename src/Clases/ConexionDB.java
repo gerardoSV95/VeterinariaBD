@@ -21,7 +21,7 @@ public class ConexionDB {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conecta = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","usr_vet","VetPass");               
-            JOptionPane.showMessageDialog(null, "Conexion exitosa");
+            //JOptionPane.showMessageDialog(null, "Conexion exitosa");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se encuentra la Base de Datos");
             System.exit(0);
