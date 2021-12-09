@@ -5,6 +5,13 @@
  */
 package Frames;
 
+import Clases.ConexionDB;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author Gerardo
@@ -14,8 +21,14 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    
+    ConexionDB conexion = null;
     public Login() {
-        initComponents();
+        initComponents();      
+        conexion = new ConexionDB();
+        
+          
     }
 
     /**
@@ -155,6 +168,11 @@ public class Login extends javax.swing.JFrame {
         jButton1.setText("INGRESAR");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,6 +191,42 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        try {
+            String consulta = " SELECT * FROM EMPLEADO WHERE USUARIO= '"+JTF_Usuario.getText()+"' AND CONTRASEÑA= '"+JPF_Contrasena.getText()+"'";//FR122011    
+            PreparedStatement ps = conexion.conecta.prepareStatement(consulta);                                                                   //ABCD12            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                JOptionPane.showMessageDialog(rootPane, "Acceso Correcto.");
+                FPrincipal fP = new FPrincipal();
+                fP.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario no existe dentro de la base de datos");
+            }
+        }catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error en consulta");
+        }
+          
+//          try {
+//            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","usr_vet","VetPass");
+//            String consulta = " SELECT * FROM EMPLEADO WHERE USUARIO= '"+JTF_Usuario.getText()+"' AND CONTRASEÑA= '"+JPF_Contrasena.getText()+"'";
+//            PreparedStatement ps = conn.prepareStatement(consulta);
+//            ResultSet rs = ps.executeQuery();
+//            if(rs.next()){
+//                JOptionPane.showMessageDialog(null, "¡Acceso correcto!");
+//                    FPrincipal fP = new FPrincipal();                    
+//                    fP.setVisible(true);
+//                    this.dispose();
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Contraseña o usuario incorrecto");
+//            }
+//        } catch (Exception e) {
+//              System.out.println(e);
+//        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+  
     /**
      * @param args the command line arguments
      */

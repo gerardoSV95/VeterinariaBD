@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Frames;
-
+import javax.swing.*;
 /**
  *
  * @author Gerardo
@@ -437,4 +437,8 @@ public class FPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private rojeru_san.rsdate.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
+
+    void set_id(int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
