@@ -5,6 +5,14 @@
  */
 package Frames;
 
+import Clases.ConexionDB;
+import java.awt.List;
+import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author Gerardo
@@ -14,10 +22,40 @@ public class Ventas extends javax.swing.JFrame {
     /**
      * Creates new form Ventas
      */
+    DefaultTableModel dm;
+    double total;
+    double sub_total;
+    double importe;
+    ConexionDB conexion = null;
+    
     public Ventas() {
         initComponents();
+        conexion = new ConexionDB();
+        total=0;
+        sub_total = 0;
+        importe = 0;
+              try {
+            
+            String consulta = "SELECT PRODUCTO,EXISTENCIA,PRESENTACION,PRECIO FROM PRODUCTO";
+            PreparedStatement ps = conexion.conecta.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+            ResultSetMetaData rms = rs.getMetaData();
+            ArrayList<Object[]> data=new ArrayList<>();            
+            while(rs.next()){                
+                Object [] rows = new Object[rms.getColumnCount()];
+                for(int i=0; i<rows.length;i++){
+                    rows[i] = rs.getObject(i+1);
+                }
+                data.add(rows);
+            }
+            DefaultTableModel dtm = (DefaultTableModel)this.JTBL_Productos.getModel();
+            for(int i=0;i<data.size();i++){
+                dtm.addRow(data.get(i));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error en consulta");
+        }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +70,7 @@ public class Ventas extends javax.swing.JFrame {
         JTBL_Ventas = new rojerusan.RSTableMetro();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTexTotal = new javax.swing.JTextField();
         rSLabelHora1 = new rojeru_san.rsdate.RSLabelHora();
         JLBL_Fecha = new rojeru_san.rsdate.RSLabelFecha();
         jLabel7 = new javax.swing.JLabel();
@@ -45,8 +83,13 @@ public class Ventas extends javax.swing.JFrame {
         JBTN_CobrarVenta = new rojeru_san.RSButtonRiple();
         JBTN_QuitarProducto = new rojeru_san.RSButtonRiple();
         JBTN_Cancelar = new rojeru_san.RSButtonRiple();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTBL_Productos = new rojerusan.RSTableMetro();
+        jLabel2 = new javax.swing.JLabel();
+        jTextCantidad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 100));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,7 +99,7 @@ public class Ventas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CODIGO DE BARRAS", "PRODUCTO", "CANTIDAD", "PRECIO DE VENTA", "IMPORTE"
+                "PRODUCTO", "PRESENTACION", "CANTIDAD", "PRECIO UNITARIO", "IMPORTE"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -92,7 +135,7 @@ public class Ventas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTBL_Ventas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 920, 430));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 920, 220));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -100,7 +143,14 @@ public class Ventas extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(109, 109, 109));
         jLabel6.setText("NO. EMPLEADO:");
 
-        jTextField3.setBorder(null);
+        jTexTotal.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
+        jTexTotal.setForeground(new java.awt.Color(109, 109, 109));
+        jTexTotal.setBorder(null);
+        jTexTotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTexTotalPropertyChange(evt);
+            }
+        });
 
         rSLabelHora1.setForeground(new java.awt.Color(109, 109, 109));
         rSLabelHora1.setFont(new java.awt.Font("Roboto Bold", 1, 24)); // NOI18N
@@ -125,44 +175,42 @@ public class Ventas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel8)
+                .addComponent(rSLabelHora1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addComponent(JLBL_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(99, 99, 99)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JLBL_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(JLBL_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel7))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(rSLabelHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(3, 9, Short.MAX_VALUE))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 15, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rSLabelHora1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(JLBL_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(9, 9, 9))
         );
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 920, 60));
@@ -197,6 +245,7 @@ public class Ventas extends javax.swing.JFrame {
         JBTN_Buscar.setColorHover(new java.awt.Color(54, 63, 73));
         JBTN_Buscar.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
         JBTN_Buscar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_Buscar.setMinimumSize(new java.awt.Dimension(219, 29));
         JBTN_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBTN_BuscarActionPerformed(evt);
@@ -268,13 +317,68 @@ public class Ventas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 890, -1));
+        jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 890, -1));
+
+        JTBL_Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "PRODUCTO", "EXISTENCIA", "PRESENTACION", "COSTO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        JTBL_Productos.setAltoHead(30);
+        JTBL_Productos.setColorBackgoundHead(new java.awt.Color(34, 41, 50));
+        JTBL_Productos.setColorBordeFilas(new java.awt.Color(109, 109, 109));
+        JTBL_Productos.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        JTBL_Productos.setColorFilasBackgound2(new java.awt.Color(230, 230, 230));
+        JTBL_Productos.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        JTBL_Productos.setColorFilasForeground2(new java.awt.Color(0, 0, 0));
+        JTBL_Productos.setColorSelBackgound(new java.awt.Color(54, 63, 73));
+        JTBL_Productos.setFont(new java.awt.Font("Roboto", 0, 11)); // NOI18N
+        JTBL_Productos.setFuenteFilas(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        JTBL_Productos.setFuenteFilasSelect(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        JTBL_Productos.setFuenteHead(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        JTBL_Productos.setGridColor(new java.awt.Color(255, 255, 255));
+        JTBL_Productos.setGrosorBordeFilas(0);
+        JTBL_Productos.setGrosorBordeHead(0);
+        JTBL_Productos.setRowHeight(30);
+        JTBL_Productos.setSelectionBackground(new java.awt.Color(66, 63, 102));
+        JTBL_Productos.getTableHeader().setReorderingAllowed(false);
+        JTBL_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTBL_ProductosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(JTBL_Productos);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 920, 190));
+
+        jLabel2.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
+        jLabel2.setText("CANTIDAD");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
+
+        jTextCantidad.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
+        jTextCantidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTextCantidadPropertyChange(evt);
+            }
+        });
+        jPanel1.add(jTextCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,20 +393,82 @@ public class Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_JTBL_VentasMouseClicked
 
     private void JBTN_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_BuscarActionPerformed
-
+           int fsel = JTBL_Productos.getSelectedRow();
+           try {
+            String producto, presentacion, precio, cantidad, importe;
+            double calcula=0.0, x=0.0, iva= 0.0;
+            int canti=0;
+            
+            if(fsel==-1){
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }else{
+                dm = (DefaultTableModel) JTBL_Productos.getModel();
+                producto = JTBL_Productos.getValueAt(fsel, 0).toString();
+                presentacion = JTBL_Productos.getValueAt(fsel, 2).toString();
+                precio = JTBL_Productos.getValueAt(fsel, 3).toString();
+                cantidad = jTextCantidad.getText();
+                
+                x = (Double.parseDouble(precio) * Integer.parseInt(cantidad));
+                importe = String.valueOf(x);
+                
+                dm = (DefaultTableModel) JTBL_Ventas.getModel();
+                String fElementos[] = {producto, presentacion, cantidad, precio, importe};
+                dm.addRow(fElementos);
+                
+                calcula = (Double.parseDouble(precio)*Integer.parseInt(jTextCantidad.getText()));
+                total = total+calcula;                  
+            }
+        } catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_JBTN_BuscarActionPerformed
 
     private void JBTN_CobrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_CobrarVentaActionPerformed
-
+        jTexTotal.setText(""+total);
     }//GEN-LAST:event_JBTN_CobrarVentaActionPerformed
 
     private void JBTN_QuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProductoActionPerformed
-
+        double x=0.0,importe,pfinal;
+        int fsel,resp;
+        try {
+            fsel = JTBL_Ventas.getSelectedRow();
+            if(fsel==-1){
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un producto para poder eliminarlo.","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }else{
+                resp = JOptionPane.showConfirmDialog(null, "¿Estas seguro que deseas eliminar el producto?","Eliminar",JOptionPane.YES_NO_OPTION);
+                if(resp == JOptionPane.YES_OPTION){
+                    importe = Double.parseDouble(JTBL_Ventas.getValueAt(fsel, 4).toString());
+                    pfinal = Double.parseDouble(jTexTotal.getText())- importe;
+                    total = pfinal;
+                    jTexTotal.setText(""+total);
+                }
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_JBTN_QuitarProductoActionPerformed
 
     private void JBTN_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_CancelarActionPerformed
-
+        int res;
+        res = JOptionPane.showConfirmDialog(null, "¿Estas seguro de cancelar la compra?","Advertencia",JOptionPane.WARNING_MESSAGE);
+        if(res==JOptionPane.YES_OPTION){
+            FPrincipal fp = new FPrincipal();
+            fp.setVisible(true);
+            this.dispose();            
+        }
     }//GEN-LAST:event_JBTN_CancelarActionPerformed
+
+    private void JTBL_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTBL_ProductosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTBL_ProductosMouseClicked
+
+    private void jTexTotalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTexTotalPropertyChange
+        // TODO add your handling code here:
+        jTexTotal.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+    }//GEN-LAST:event_jTexTotalPropertyChange
+
+    private void jTextCantidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextCantidadPropertyChange
+        jTextCantidad.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+    }//GEN-LAST:event_jTextCantidadPropertyChange
 
     /**
      * @param args the command line arguments
@@ -336,6 +502,8 @@ public class Ventas extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ventas().setVisible(true);
+                
+
             }
         });
     }
@@ -348,8 +516,10 @@ public class Ventas extends javax.swing.JFrame {
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha;
     private javax.swing.JPanel JPLN_Control;
     private javax.swing.JPanel JPNL_Encabezado;
+    private rojerusan.RSTableMetro JTBL_Productos;
     private rojerusan.RSTableMetro JTBL_Ventas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -357,7 +527,9 @@ public class Ventas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTexTotal;
+    private javax.swing.JTextField jTextCantidad;
     private rojeru_san.rsdate.RSLabelHora rSLabelHora1;
     // End of variables declaration//GEN-END:variables
 }

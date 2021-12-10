@@ -61,6 +61,7 @@ public class FPrincipal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 100));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -360,6 +361,9 @@ public class FPrincipal extends javax.swing.JFrame {
 
     private void JBTN_QuitarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto1ActionPerformed
         // TODO add your handling code here:
+        Ventas v = new Ventas();
+        v.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_JBTN_QuitarProducto1ActionPerformed
 
     private void JBTN_QuitarProducto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto2ActionPerformed
