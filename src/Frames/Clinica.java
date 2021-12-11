@@ -336,7 +336,13 @@ public class Clinica extends javax.swing.JFrame {
     }//GEN-LAST:event_JBTN_CobrarVentaActionPerformed
 
     private void JBTN_QuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProductoActionPerformed
-
+        /**
+         *funcion regresa al menu principal
+         */
+        FPrincipal inicio = new FPrincipal();
+        inicio.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_JBTN_QuitarProductoActionPerformed
 
     private void JBTN_QuitarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto1ActionPerformed
