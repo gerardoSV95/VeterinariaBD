@@ -210,7 +210,6 @@ public class Ventas extends javax.swing.JFrame {
         jTextCantidad = new javax.swing.JTextField();
 
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog1.setPreferredSize(new java.awt.Dimension(810, 600));
         jDialog1.setSize(new java.awt.Dimension(810, 600));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -358,6 +357,11 @@ public class Ventas extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jButton2.setText("Nuevo Cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 140, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -979,6 +983,11 @@ public class Ventas extends javax.swing.JFrame {
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
