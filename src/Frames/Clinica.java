@@ -245,7 +245,7 @@ public class Clinica extends javax.swing.JFrame {
 
         JPLN_Control.add(jPanel6);
 
-        jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 250, 540));
+        jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 540));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
