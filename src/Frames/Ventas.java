@@ -22,7 +22,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Gerardo
  */
 public class Ventas extends javax.swing.JFrame {
-
     /**
      * Creates new form Ventas
      */
@@ -123,8 +122,7 @@ public class Ventas extends javax.swing.JFrame {
             psC.setString(4, name[2].toString());
             psC.setString(5, name[3].toString());
             psC.setString(6, name[4].toString());
-            psC.executeUpdate();
-            
+            psC.executeUpdate();            
         } catch (Exception e) {
         }
     }
