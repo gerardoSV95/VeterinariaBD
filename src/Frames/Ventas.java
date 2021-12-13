@@ -189,7 +189,7 @@ public class Ventas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTBL_Ventas = new rojerusan.RSTableMetro();
-        jPanel7 = new javax.swing.JPanel();
+        jPanel_Footer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jTexTotal = new javax.swing.JTextField();
         rSLabelHora1 = new rojeru_san.rsdate.RSLabelHora();
@@ -625,7 +625,7 @@ public class Ventas extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 920, 220));
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_Footer.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(109, 109, 109));
@@ -655,11 +655,11 @@ public class Ventas extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(109, 109, 109));
         jLabel1.setText("TOTAL: $");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_FooterLayout = new javax.swing.GroupLayout(jPanel_Footer);
+        jPanel_Footer.setLayout(jPanel_FooterLayout);
+        jPanel_FooterLayout.setHorizontalGroup(
+            jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_FooterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -676,21 +676,21 @@ public class Ventas extends javax.swing.JFrame {
                 .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(168, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+        jPanel_FooterLayout.setVerticalGroup(
+            jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_FooterLayout.createSequentialGroup()
+                .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_FooterLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGroup(jPanel_FooterLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_FooterLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rSLabelHora1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -698,7 +698,7 @@ public class Ventas extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
         );
 
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 920, 60));
+        jPanel1.add(jPanel_Footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 920, 60));
 
         JPNL_Encabezado.setBackground(new java.awt.Color(236, 236, 236));
 
@@ -949,7 +949,6 @@ public class Ventas extends javax.swing.JFrame {
             String producto, presentacion, precio, cantidad, importe;
             double calcula=0.0, x=0.0, iva= 0.0;
             int canti=0;
-
             if(fsel==-1){
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un producto","Advertencia",JOptionPane.WARNING_MESSAGE);
             }else{
@@ -968,9 +967,7 @@ public class Ventas extends javax.swing.JFrame {
 
                 calcula = (Double.parseDouble(precio)*Integer.parseInt(jTextCantidad.getText()));
                 total = total+calcula;
-            }
-           
-           
+            }                      
         } catch (Exception e) {
 
         }
@@ -1072,8 +1069,8 @@ public class Ventas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel_Footer;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -59,6 +59,11 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 100));
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                formPropertyChange(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,7 +198,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Object empleado[];
+        Object empleado[];        
         try {
             empleado = new Object[9];
             String consulta = " SELECT * FROM EMPLEADO WHERE USUARIO= '"+JTF_Usuario.getText()+"' AND CONTRASEÑA= '"+JPF_Contrasena.getText()+"'";//FR122011    
@@ -239,6 +244,10 @@ public class Login extends javax.swing.JFrame {
 //              System.out.println(e);
 //        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formPropertyChange
   
     /**
      * @param args the command line arguments
