@@ -77,13 +77,14 @@ public class Clinica extends javax.swing.JFrame {
         
         fEntrada = JLBL_FechaIn.getFecha();
         nombre = jTextNombre.getText();
-        edad = Integer.parseInt( jTextEdad.getText());
+        edad = Integer.parseInt(jTextEdad.getText());
         diagnostico = jTextDiagnostico.getText();
         medicina = jTextMedicinas.getText();
         costo = Integer.parseInt(jTextCosto.getText());
         vacuna = jComboVacuna.getSelectedItem().toString();
         tMascota = jComboTMascota.getSelectedItem().toString();
         tServicio = jComboTServicio.getSelectedItem().toString();
+        
         if(tMascota == "Ave"){
             id_Mas = 1;
         }else if (tMascota == "Felino"){
