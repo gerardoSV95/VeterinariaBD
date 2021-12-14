@@ -30,7 +30,7 @@ public class Ventas extends javax.swing.JFrame {
     double total;
     double sub_total;
     double importe;
-    int ID_cliente, ID_TPAGO, ID_EMPELADO,ID_ESTADO;
+    int ID_cliente,ID_Ncliente, ID_TPAGO, ID_EMPELADO,ID_ESTADO;
     ConexionDB conexion = null;
     
     
@@ -44,8 +44,8 @@ public class Ventas extends javax.swing.JFrame {
         //llenadoTPago();
     }
     private void productos(){
-        try {
-            
+        jTextCantidad.requestFocusInWindow();
+        try {            
             String consulta = "SELECT PRODUCTO,EXISTENCIA,PRESENTACION,PRECIO FROM PRODUCTO";
             PreparedStatement ps = conexion.conecta.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
@@ -96,9 +96,15 @@ public class Ventas extends javax.swing.JFrame {
     }
     private void llenadoCliente(){        
         try {
-            String consulta = "SELECT ID_CLIENTE, NOMBRE, APELLIDO_PAT FROM DUENIO";
+            String consulta = "SELECT MAX(ID_CLIENTE)+1 FROM DUENIO";
             PreparedStatement ps = (PreparedStatement)conexion.conecta.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                ID_Ncliente = rs.getInt(1);
+            }
+            consulta = "SELECT ID_CLIENTE, NOMBRE, APELLIDO_PAT FROM DUENIO";
+            ps = (PreparedStatement)conexion.conecta.prepareStatement(consulta);
+            rs = ps.executeQuery();
             jComboCliente.addItem("-Seleccione un cliente-");
             while(rs.next()){
                 jComboCliente.addItem(rs.getString("NOMBRE")+" "+rs.getString("APELLIDO_PAT"));
@@ -110,7 +116,7 @@ public class Ventas extends javax.swing.JFrame {
     }
     private void comboEstado(){
         try {
-            String consulta = "SELECT * FROM ESTADO";
+            String consulta = "SELECT ID_ESTADO, ESTADO FROM ESTADO";
             PreparedStatement ps = conexion.conecta.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             jComboEdo.addItem("- Selecciones un estado -");
@@ -137,17 +143,26 @@ public class Ventas extends javax.swing.JFrame {
             ps = conexion.conecta.prepareStatement(consulta);
             rs = ps.executeQuery();
             JOptionPane.showMessageDialog(null, "Venta finalizada con exito!");
+            jDialogFCompra.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
-    private void nuevoCliente(){   
-        Object [] name = null;
-        String nombre, apellido1, apellido2, fechaR,id_dir;
-        int id_cl;
+    private void nuevoCliente(){           
+        String nombre, apellido1, apellido2, fechaR;        
+        nombre = jTextRCnombre.getText();
+        apellido1 = jTextFRCAP.getText();
+        apellido2 = jTextFRCAM.getText();
+        fechaR = JLBL_FechaRC.getFecha();
+        
          try {            
-            
+            String consulta = "INSERT INTO DUENIO VALUES ('"+ID_Ncliente+"','"+nombre+"','"+apellido1+"','"+apellido2+"','"+fechaR+"','"+ID_ESTADO+"')";
+            PreparedStatement ps =conexion.conecta.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+            JOptionPane.showMessageDialog(null, "Registro finalizado con exito!");
+            jDialogRCliente.dispose();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
     /**
@@ -178,7 +193,7 @@ public class Ventas extends javax.swing.JFrame {
         jComboTPago = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonNCliente = new javax.swing.JButton();
         jComboCliente = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         JLBL_FechaVP = new rojeru_san.rsdate.RSLabelFecha();
@@ -189,6 +204,9 @@ public class Ventas extends javax.swing.JFrame {
         jTextRCnombre = new javax.swing.JTextField();
         jTextFRCAP = new javax.swing.JTextField();
         jTextFRCAM = new javax.swing.JTextField();
+        JLBL_FechaRC = new rojeru_san.rsdate.RSLabelFecha();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jTextFRCcalle = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -200,11 +218,8 @@ public class Ventas extends javax.swing.JFrame {
         jTextFRCNI = new javax.swing.JTextField();
         jTextFRCNE = new javax.swing.JTextField();
         jTextFRC_CP = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jButtonFRCliente = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        JLBL_FechaRC = new rojeru_san.rsdate.RSLabelFecha();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -375,14 +390,14 @@ public class Ventas extends javax.swing.JFrame {
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 140, 40));
 
-        jButton2.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
-        jButton2.setText("Nuevo Cliente");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNCliente.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
+        jButtonNCliente.setText("Nuevo Cliente");
+        jButtonNCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonNClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 140, 40));
+        jPanel2.add(jButtonNCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 140, 40));
 
         jComboCliente.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jPanel2.add(jComboCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 180, 30));
@@ -413,6 +428,8 @@ public class Ventas extends javax.swing.JFrame {
         );
 
         jDialogRCliente.setBackground(new java.awt.Color(255, 255, 255));
+        jDialogRCliente.setLocation(new java.awt.Point(400, 100));
+        jDialogRCliente.setSize(new java.awt.Dimension(668, 491));
 
         jLabel16.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
         jLabel16.setText("Nombre");
@@ -422,6 +439,21 @@ public class Ventas extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
         jLabel18.setText("Apellido materno");
+
+        jTextFRCAP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFRCAPActionPerformed(evt);
+            }
+        });
+
+        JLBL_FechaRC.setForeground(new java.awt.Color(109, 109, 109));
+        JLBL_FechaRC.setFont(new java.awt.Font("Raleway", 1, 24)); // NOI18N
+        JLBL_FechaRC.setFormato("dd-MM-yy");
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/Icono_Calendario.png"))); // NOI18N
+
+        jLabel25.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
+        jLabel25.setText("Fecha");
 
         jLabel19.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
         jLabel19.setText("Calle");
@@ -444,20 +476,21 @@ public class Ventas extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
-        jButton4.setText("Finalizar");
+        jButtonFRCliente.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
+        jButtonFRCliente.setText("Finalizar");
+        jButtonFRCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFRClienteActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
         jButton5.setText("Cancelar");
-
-        JLBL_FechaRC.setForeground(new java.awt.Color(109, 109, 109));
-        JLBL_FechaRC.setFont(new java.awt.Font("Raleway", 1, 24)); // NOI18N
-        JLBL_FechaRC.setFormato("yyyy-MM-dd");
-
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/Icono_Calendario.png"))); // NOI18N
-
-        jLabel25.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
-        jLabel25.setText("Fecha");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Raleway", 0, 14)); // NOI18N
         jLabel26.setText("Estado");
@@ -488,9 +521,38 @@ public class Ventas extends javax.swing.JFrame {
         jDialogRCliente.getContentPane().setLayout(jDialogRClienteLayout);
         jDialogRClienteLayout.setHorizontalGroup(
             jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jDialogRClienteLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jDialogRClienteLayout.createSequentialGroup()
+                            .addComponent(jLabel19)
+                            .addGap(49, 49, 49)
+                            .addComponent(jTextFRCcalle, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(jLabel20)
+                            .addGap(30, 30, 30)
+                            .addComponent(jTextFRCAlc))
+                        .addGroup(jDialogRClienteLayout.createSequentialGroup()
+                            .addGap(275, 275, 275)
+                            .addComponent(jLabel23)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFRCNE)
+                                .addComponent(jComboEdo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jDialogRClienteLayout.createSequentialGroup()
+                            .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogRClienteLayout.createSequentialGroup()
+                                    .addComponent(jLabel21)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextFRC_CP))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogRClienteLayout.createSequentialGroup()
+                                    .addComponent(jLabel22)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextFRCNI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(32, 32, 32)
+                            .addComponent(jLabel26)))
                     .addGroup(jDialogRClienteLayout.createSequentialGroup()
                         .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
@@ -509,68 +571,41 @@ public class Ventas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(JLBL_FechaRC, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addGap(49, 49, 49)
-                        .addComponent(jTextFRCcalle, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel20)
-                        .addGap(30, 30, 30)
-                        .addComponent(jTextFRCAlc))
-                    .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                        .addGap(275, 275, 275)
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFRCNE)
-                            .addComponent(jComboEdo, 0, 202, Short.MAX_VALUE)))
-                    .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4)
-                            .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogRClienteLayout.createSequentialGroup()
-                                    .addComponent(jLabel21)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFRC_CP))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogRClienteLayout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFRCNI, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(jButton5))
-                            .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel26)))))
+                        .addGap(156, 156, 156)
+                        .addComponent(jButtonFRCliente)
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton5)))
                 .addContainerGap(83, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDialogRClienteLayout.setVerticalGroup(
             jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogRClienteLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(45, 45, 45)
                 .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                        .addGap(0, 26, Short.MAX_VALUE)
-                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(jTextFRCAP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(jTextFRCAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))
-                    .addGroup(jDialogRClienteLayout.createSequentialGroup()
-                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(jTextRCnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25))
+                        .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
-                            .addComponent(JLBL_FechaRC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(JLBL_FechaRC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jDialogRClienteLayout.createSequentialGroup()
+                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDialogRClienteLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jTextRCnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDialogRClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(5, 5, 5)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(jTextFRCAP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(jTextFRCAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(jTextFRCcalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -588,9 +623,9 @@ public class Ventas extends javax.swing.JFrame {
                     .addComponent(jTextFRC_CP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboEdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(jDialogRClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
+                    .addComponent(jButtonFRCliente)
                     .addComponent(jButton5))
                 .addGap(73, 73, 73))
         );
@@ -871,6 +906,11 @@ public class Ventas extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
 
         jTextCantidad.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
+        jTextCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCantidadActionPerformed(evt);
+            }
+        });
         jTextCantidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jTextCantidadPropertyChange(evt);
@@ -914,7 +954,7 @@ public class Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_jTexTotal1PropertyChange
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        jDialogFCompra.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboEmpleadoActionPerformed
@@ -996,14 +1036,31 @@ public class Ventas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFRC_CPActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonNClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNClienteActionPerformed
+        comboEstado();        
         jDialogRCliente.setModal(true);
         jDialogRCliente.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonNClienteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         fVenta();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextFRCAPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFRCAPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFRCAPActionPerformed
+
+    private void jTextCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadActionPerformed
+        
+    }//GEN-LAST:event_jTextCantidadActionPerformed
+
+    private void jButtonFRClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFRClienteActionPerformed
+        nuevoCliente();
+    }//GEN-LAST:event_jButtonFRClienteActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jDialogRCliente.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1058,10 +1115,10 @@ public class Ventas extends javax.swing.JFrame {
     private rojerusan.RSTableMetro JTBL_Productos;
     private rojerusan.RSTableMetro JTBL_Ventas;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonFRCliente;
+    private javax.swing.JButton jButtonNCliente;
     private javax.swing.JComboBox<String> jComboCliente;
     private javax.swing.JComboBox<String> jComboEdo;
     private javax.swing.JComboBox<String> jComboEmpleado;
