@@ -150,7 +150,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="rojeru_san.RSButtonRiple" name="JBTN_QuitarProducto1">
+            <Component class="rojeru_san.RSButtonRiple" name="JBTN_Venta">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="29" red="22" type="rgb"/>
@@ -172,7 +172,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_QuitarProducto1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_VentaActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel9">
@@ -195,7 +195,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="rojeru_san.RSButtonRiple" name="JBTN_QuitarProducto2">
+            <Component class="rojeru_san.RSButtonRiple" name="JBTN_Clinica">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="29" red="22" type="rgb"/>
@@ -217,7 +217,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_QuitarProducto2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_ClinicaActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel5">
@@ -240,7 +240,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="rojeru_san.RSButtonRiple" name="JBTN_QuitarProducto3">
+            <Component class="rojeru_san.RSButtonRiple" name="JBTN_Usuarios">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="29" red="22" type="rgb"/>
@@ -262,7 +262,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_QuitarProducto3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_UsuariosActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel6">
@@ -285,7 +285,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="rojeru_san.RSButtonRiple" name="JBTN_QuitarProducto4">
+            <Component class="rojeru_san.RSButtonRiple" name="JBTN_Productos">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="29" red="22" type="rgb"/>
@@ -307,7 +307,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_QuitarProducto4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_ProductosActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel8">
@@ -330,7 +330,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="rojeru_san.RSButtonRiple" name="JBTN_QuitarProducto5">
+            <Component class="rojeru_san.RSButtonRiple" name="JBTN_Salir">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="29" red="22" type="rgb"/>
@@ -352,7 +352,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_QuitarProducto5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBTN_SalirActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

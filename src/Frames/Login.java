@@ -24,6 +24,8 @@ public class Login extends javax.swing.JFrame {
     
     
     ConexionDB conexion = null;
+    String user;
+    String name;
     public Login() {
         initComponents();      
         conexion = new ConexionDB();
@@ -217,6 +219,8 @@ public class Login extends javax.swing.JFrame {
                 empleado[8] = rs.getInt(9);
                 String usuario = JTF_Usuario.getText();
                 String nombre = empleado[1] +" "+  empleado[2];
+                name = usuario;
+                user= usuario;
                 FPrincipal fP = new FPrincipal(nombre, usuario);
                 fP.setVisible(true);
                 this.dispose();
@@ -227,22 +231,7 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error en consulta");
         }
           
-//          try {
-//            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","usr_vet","VetPass");
-//            String consulta = " SELECT * FROM EMPLEADO WHERE USUARIO= '"+JTF_Usuario.getText()+"' AND CONTRASEÑA= '"+JPF_Contrasena.getText()+"'";
-//            PreparedStatement ps = conn.prepareStatement(consulta);
-//            ResultSet rs = ps.executeQuery();
-//            if(rs.next()){
-//                JOptionPane.showMessageDialog(null, "¡Acceso correcto!");
-//                    FPrincipal fP = new FPrincipal();                    
-//                    fP.setVisible(true);
-//                    this.dispose();
-//            }else{
-//                JOptionPane.showMessageDialog(null, "Contraseña o usuario incorrecto");
-//            }
-//        } catch (Exception e) {
-//              System.out.println(e);
-//        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange

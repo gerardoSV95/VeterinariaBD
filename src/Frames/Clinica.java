@@ -19,11 +19,13 @@ import java.util.Calendar;
  *
  * @author Gerardo
  */
-public class Clinica extends javax.swing.JFrame {
 
+public class Clinica extends javax.swing.JFrame {
     /**
      * Creates new form Clinica
      */
+    int ID_TMASCOTA, ID_TSERVICIO;
+    String ID_VACUNA;
     ConexionDB conexion = null;
     public Clinica() {
         initComponents();
@@ -33,12 +35,13 @@ public class Clinica extends javax.swing.JFrame {
         comboMascota();
         comboServicio();
          try {
-            String consulta = "SELECT VACUNA FROM VACUNA";
+            String consulta = "SELECT V_ID, VACUNA FROM VACUNA";
             PreparedStatement ps = (PreparedStatement)conexion.conecta.prepareStatement(consulta);
             ResultSet rs  = ps.executeQuery();
             jComboVacuna.addItem("- Seleccione vacuna -");
             while(rs.next()){
                 jComboVacuna.addItem(rs.getString("VACUNA"));
+                ID_VACUNA = rs.getString("V_ID");
             }
          } catch (Exception e) {
              JOptionPane.showMessageDialog(null, "Error en combo Vacuna"+e);
@@ -46,12 +49,13 @@ public class Clinica extends javax.swing.JFrame {
     }
     private void comboMascota(){
         try {
-            String consulta = "SELECT TIPO_MASCOTA FROM MASCOTA";
+            String consulta = "SELECT ID_TMASCOTA, TIPO_MASCOTA FROM MASCOTA";
             PreparedStatement ps = (PreparedStatement)conexion.conecta.prepareStatement(consulta);
             ResultSet rs  = ps.executeQuery();
             jComboTMascota.addItem("- Seleccione mascota -");
             while(rs.next()){
                 jComboTMascota.addItem(rs.getString("TIPO_MASCOTA"));
+                ID_TMASCOTA = rs.getInt("ID_TMASCOTA");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en combo Mascota "+e);
@@ -59,21 +63,22 @@ public class Clinica extends javax.swing.JFrame {
     }
     private void comboServicio(){
         try {
-            String consulta = "SELECT TSERVICIO FROM TIPOSERVICIO";
+            String consulta = "SELECT ID_TSERVICIO, TSERVICIO FROM TIPOSERVICIO";
             PreparedStatement ps = (PreparedStatement)conexion.conecta.prepareStatement(consulta);
             ResultSet rs  = ps.executeQuery();
             jComboTServicio.addItem("- Seleccione servicio -");
             while(rs.next()){
                 jComboTServicio.addItem(rs.getString("TSERVICIO"));
+                ID_TSERVICIO = rs.getInt("ID_TSERVICIO");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en combo Servicio "+e);
+            JOptionPane.showMessageDialog(null, "Error: "+e);
         }
     }
     private void nuevoPaciente(){
         Object nPaciete[];
-        String nombre,  diagnostico, medicina, vacuna, fEntrada, tMascota, tServicio,ID_vacuna = null ;
-        int edad, ID=0, costo,id_Mas = 0, id_serv=0;
+        String nombre,  diagnostico, medicina, vacuna, fEntrada, tMascota, tServicio ;
+        int edad, ID=0, costo;
         
         fEntrada = JLBL_FechaIn.getFecha();
         nombre = jTextNombre.getText();
@@ -85,29 +90,6 @@ public class Clinica extends javax.swing.JFrame {
         tMascota = jComboTMascota.getSelectedItem().toString();
         tServicio = jComboTServicio.getSelectedItem().toString();
         
-        if(tMascota == "Ave"){
-            id_Mas = 1;
-        }else if (tMascota == "Felino"){
-            id_Mas = 2;
-        }else if(tMascota == "Mamifero"){
-            id_Mas = 3;
-        }else if(tMascota == "Peces"){
-            id_Mas = 4;
-        }else if(tMascota == "Reptiles"){
-            id_Mas = 5;
-        }//---------- ID servicio --------------
-        if(tServicio =="Consulta"){
-            id_serv = 1;
-        }else if (tServicio == "Emergencia"){
-            id_serv = 2;
-        }else if (tServicio == "Venta"){
-            id_serv = 3;
-        }
-        // -------- ID Vacuna -----------------
-        if(vacuna == "Leishmania-1"){
-            ID_vacuna = "VAC00";
-        }
-        
         try {
             String consulta = "SELECT MAX (ID_PACIENTE)+1 FROM PACIENTE";
             PreparedStatement ps = (PreparedStatement)conexion.conecta.prepareStatement(consulta);
@@ -115,12 +97,12 @@ public class Clinica extends javax.swing.JFrame {
             if(rs.next()){
                 ID = rs.getInt(1);
             }
-            String sentencia = "INSERT INTO PACIENTE VALUES ('"+ID+"','"+nombre+"','"+edad+"','"+diagnostico+"','"+medicina+"','"+costo+"','"+ID_vacuna+"','"+id_Mas+"','"+id_serv+"','"+ID+"')";
+            String sentencia = "INSERT INTO PACIENTE VALUES ('"+ID+"','"+nombre+"','"+edad+"','"+ID_VACUNA+"','"+diagnostico+"','"+costo+"','"+medicina+"','"+ID_TMASCOTA+"','"+ID_TSERVICIO+"','"+ID+"')";
             PreparedStatement ps1 =(PreparedStatement)conexion.conecta.prepareStatement(sentencia);
             ps1.executeUpdate();
             JOptionPane.showMessageDialog(null, "Paciente ingresado con exito.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error"+e);
+            JOptionPane.showMessageDialog(null, "Error: "+e);
         }
     }
             
@@ -155,7 +137,7 @@ public class Clinica extends javax.swing.JFrame {
                 vacuna = paciente[5].toString();
                 dias_estancia = paciente[6].toString();
                 costo = paciente[7].toString();
-                String fElementos[] = {id, nombre, edad, diagnostico, medicina, vacuna, dias_estancia, costo};
+                String fElementos[] = { nombre, edad, diagnostico, medicina, vacuna, dias_estancia, costo};
                 dtm.addRow(fElementos);
             }else{
                 JOptionPane.showMessageDialog(null, "El paciente no existe dentro de la base de datos");
@@ -1001,7 +983,6 @@ public class Clinica extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextDiagnosticoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         nuevoPaciente();
     }//GEN-LAST:event_jButton3ActionPerformed
 

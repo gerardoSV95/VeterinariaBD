@@ -6,7 +6,6 @@
 package Frames;
 
 import Clases.ConexionDB;
-import Clases.getCliente;
 import java.awt.List;
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,12 +44,12 @@ public class Ventas extends javax.swing.JFrame {
     }
     private void productos(){
         jTextCantidad.requestFocusInWindow();
-        try {            
+        try {
             String consulta = "SELECT PRODUCTO,EXISTENCIA,PRESENTACION,PRECIO FROM PRODUCTO";
             PreparedStatement ps = conexion.conecta.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             ResultSetMetaData rms = rs.getMetaData();
-            ArrayList<Object[]> data=new ArrayList<>();            
+            ArrayList<Object[]> data=new ArrayList<>();
             while(rs.next()){                
                 Object [] rows = new Object[rms.getColumnCount()];
                 for(int i=0; i<rows.length;i++){
@@ -247,7 +246,6 @@ public class Ventas extends javax.swing.JFrame {
         jTextCantidad = new javax.swing.JTextField();
 
         jDialogFCompra.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialogFCompra.setPreferredSize(new java.awt.Dimension(810, 600));
         jDialogFCompra.setSize(new java.awt.Dimension(810, 600));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -427,7 +425,6 @@ public class Ventas extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jDialogRCliente.setBackground(new java.awt.Color(255, 255, 255));
         jDialogRCliente.setLocation(new java.awt.Point(400, 100));
         jDialogRCliente.setSize(new java.awt.Dimension(668, 491));
 
@@ -744,12 +741,15 @@ public class Ventas extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rSLabelHora1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JLBL_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(9, 9, 9))
+            .addGroup(jPanel_FooterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel_Footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 920, 60));
@@ -965,8 +965,8 @@ public class Ventas extends javax.swing.JFrame {
         int res;
         res = JOptionPane.showConfirmDialog(null, "¿Estas seguro de cancelar la compra?","Advertencia",JOptionPane.WARNING_MESSAGE);
         if(res==JOptionPane.YES_OPTION){
-            FPrincipal fp = new FPrincipal();
-            fp.setVisible(true);
+            //FPrincipal fp = new FPrincipal();
+            //fp.setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_JBTN_CancelarActionPerformed
