@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historialP" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ba7ef8f-0632-4ad2-9eb5-2bf601b77f30">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Veterinaria"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT ID_PACIENTE, NOMBRE, EDAD, DIAGNOSTICO, MEDICINAS,  VACUNA, DIAS_ESTANCIA, COSTO 
+FROM PACIENTE 
+JOIN VACUNA ON  ID_VACUNA  = V_ID 
+JOIN ESTANCIA ON P_ID_ESTANCIA = ID_ESTANCIA 
+WHERE NOMBRE  = 'WARWICK']]>
+	</queryString>
+	<field name="ID_PACIENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ID_PACIENTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_PACIENTE"/>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="EDAD" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="EDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="EDAD"/>
+	</field>
+	<field name="DIAGNOSTICO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DIAGNOSTICO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIAGNOSTICO"/>
+	</field>
+	<field name="MEDICINAS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MEDICINAS"/>
+		<property name="com.jaspersoft.studio.field.label" value="MEDICINAS"/>
+	</field>
+	<field name="VACUNA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VACUNA"/>
+		<property name="com.jaspersoft.studio.field.label" value="VACUNA"/>
+	</field>
+	<field name="DIAS_ESTANCIA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="DIAS_ESTANCIA"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIAS_ESTANCIA"/>
+	</field>
+	<field name="COSTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="COSTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="COSTO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

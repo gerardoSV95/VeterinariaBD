@@ -374,7 +374,8 @@ public class FPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JBTN_ClinicaActionPerformed
 
     private void JBTN_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_UsuariosActionPerformed
-        // TODO add your handling code here:
+        Usuarios usr = new Usuarios();
+        usr.setVisible(true);
     }//GEN-LAST:event_JBTN_UsuariosActionPerformed
 
     private void JBTN_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_ProductosActionPerformed
@@ -383,7 +384,7 @@ public class FPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JBTN_ProductosActionPerformed
 
     private void JBTN_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_SalirActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_JBTN_SalirActionPerformed
 
     /**

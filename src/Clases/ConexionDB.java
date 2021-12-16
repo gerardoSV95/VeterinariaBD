@@ -14,23 +14,20 @@ import javax.swing.JOptionPane;
  *
  * @author Gerardo
  */
-public class ConexionDB {    
-    
+public class ConexionDB {        
     public Connection conecta;
-    public ConexionDB(){        
+    
+    public  ConexionDB(){        
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conecta = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XEPDB1","usr_vet","VetPass");               
             //JOptionPane.showMessageDialog(null, "Conexion exitosa");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se encuentra la Base de Datos");
-            System.exit(0);
-            
+            System.exit(0);            
         } catch(ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "Falta libreria en Oracle SQL");
-            System.exit(0);
-            
-        }
-        
+            System.exit(0);            
+        }        
     } 	
 }

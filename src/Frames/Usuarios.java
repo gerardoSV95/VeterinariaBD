@@ -85,7 +85,7 @@ public class Usuarios extends javax.swing.JFrame {
         fecha = JLBL_Fecha1.getFecha();
         
         try {
-            String consulta = "SELECT MAX (ID_EMPLEADO)+1 FROM EMPLEADO";
+            String consulta = "SELECT MAX (EMPLEADO_ID)+1 FROM EMPLEADO";
             PreparedStatement ps = conexion.conecta.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){

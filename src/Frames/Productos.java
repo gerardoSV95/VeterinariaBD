@@ -74,7 +74,6 @@ public class Productos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         jFrameIngresarProd.setLocation(new java.awt.Point(400, 100));
-        jFrameIngresarProd.setPreferredSize(new java.awt.Dimension(1000, 700));
         jFrameIngresarProd.setSize(new java.awt.Dimension(821, 658));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -371,6 +370,11 @@ public class Productos extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -443,6 +447,10 @@ public class Productos extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jFrameIngresarProd.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -25,7 +25,7 @@ public class Clinica extends javax.swing.JFrame {
      * Creates new form Clinica
      */
     int ID_TMASCOTA, ID_TSERVICIO;
-    String ID_VACUNA;
+    String ID_VACUNA, nombreP;
     ConexionDB conexion = null;
     public Clinica() {
         initComponents();
@@ -104,12 +104,12 @@ public class Clinica extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: "+e);
         }
-    }
-            
+    } 
     private void hPaciente(){
         jDialog1.setModal(true);
         jDialog1.setVisible(true);
-        Object paciente[] ;        
+        Object paciente[] ;
+        nombreP = jTextNombreP.getText();
         try {
             String id, nombre, edad, diagnostico, medicina, vacuna, dias_estancia, costo;
             paciente = new Object[8];
@@ -165,6 +165,7 @@ public class Clinica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTBL_historialP = new rojerusan.RSTableMetro();
         jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel_Footer = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         rSLabelHora2 = new rojeru_san.rsdate.RSLabelHora();
@@ -319,32 +320,47 @@ public class Clinica extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
+        jButton5.setText("Descargar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
                 .addComponent(jTextNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(60, 60, 60)))
+                .addGap(25, 25, 25))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
         );
 
@@ -420,11 +436,10 @@ public class Clinica extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel_Footer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jFrameIngresarP.setLocation(new java.awt.Point(400, 100));
-        jFrameIngresarP.setPreferredSize(new java.awt.Dimension(796, 460));
         jFrameIngresarP.setResizable(false);
         jFrameIngresarP.setSize(new java.awt.Dimension(724, 480));
 
@@ -954,7 +969,7 @@ public class Clinica extends javax.swing.JFrame {
     }//GEN-LAST:event_JBTN_AddPActionPerformed
 
     private void JBTN_QuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProductoActionPerformed
-
+            this.dispose();
     }//GEN-LAST:event_JBTN_QuitarProductoActionPerformed
 
     private void JBTN_QuitarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto1ActionPerformed
@@ -990,6 +1005,11 @@ public class Clinica extends javax.swing.JFrame {
         // TODO add your handling code here:
         jFrameIngresarP.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+            reporteHistorialPaciente rHP = new reporteHistorialPaciente(nombreP);
+            rHP.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1043,6 +1063,7 @@ public class Clinica extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboTMascota;
     private javax.swing.JComboBox<String> jComboTServicio;
     private javax.swing.JComboBox<String> jComboVacuna;
