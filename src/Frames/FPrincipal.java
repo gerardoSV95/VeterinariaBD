@@ -42,7 +42,6 @@ public class FPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        JBTN_QuitarProducto = new rojeru_san.RSButtonRiple();
         jPanel4 = new javax.swing.JPanel();
         JBTN_Venta = new rojeru_san.RSButtonRiple();
         jPanel9 = new javax.swing.JPanel();
@@ -96,21 +95,6 @@ public class FPrincipal extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel3);
-
-        JBTN_QuitarProducto.setBackground(new java.awt.Color(34, 41, 50));
-        JBTN_QuitarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_home.png"))); // NOI18N
-        JBTN_QuitarProducto.setText("Inicio");
-        JBTN_QuitarProducto.setColorHover(new java.awt.Color(54, 63, 73));
-        JBTN_QuitarProducto.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
-        JBTN_QuitarProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        JBTN_QuitarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        JBTN_QuitarProducto.setPreferredSize(new java.awt.Dimension(160, 40));
-        JBTN_QuitarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBTN_QuitarProductoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(JBTN_QuitarProducto);
 
         jPanel4.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -359,10 +343,6 @@ public class FPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JBTN_QuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProductoActionPerformed
-
-    }//GEN-LAST:event_JBTN_QuitarProductoActionPerformed
-
     private void JBTN_VentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_VentaActionPerformed
         Ventas v = new Ventas();
         v.setVisible(true);        
@@ -384,7 +364,7 @@ public class FPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JBTN_ProductosActionPerformed
 
     private void JBTN_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_SalirActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_JBTN_SalirActionPerformed
 
     /**
@@ -427,7 +407,6 @@ public class FPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.RSButtonRiple JBTN_Clinica;
     private rojeru_san.RSButtonRiple JBTN_Productos;
-    private rojeru_san.RSButtonRiple JBTN_QuitarProducto;
     private rojeru_san.RSButtonRiple JBTN_Salir;
     private rojeru_san.RSButtonRiple JBTN_Usuarios;
     private rojeru_san.RSButtonRiple JBTN_Venta;

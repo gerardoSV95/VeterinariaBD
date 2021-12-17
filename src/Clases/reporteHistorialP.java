@@ -22,16 +22,17 @@ import net.sf.jasperreports.swing.JRViewer;
  * @author Gerardo
  */
 
-public class reporteHistorialP extends ConexionDB{
+public class reporteHistorialP {
     ConexionDB conexion = null;
+    
     public JRViewer getHistorialP(String name){
         conexion = new ConexionDB();
         try {
-            JasperDesign desing = JRXmlLoader.load(getClass().getResource("/reportes/historialP.jrxml").getPath());
-            JasperReport jr = JasperCompileManager.compileReport(desing);
-            Map<String, Object> parametros = new HashMap<>();
-            parametros.put("NOMBRE",name);
-            String reportsDirPath = getClass().getResource("/reportes").getPath();
+           JasperDesign desing = JRXmlLoader.load(getClass().getResource("/reportes/historial.jrxml").getPath());
+           JasperReport jr = JasperCompileManager.compileReport(desing);
+           Map<String, Object> parametros = new HashMap<>();
+           parametros.put("NOMBRE",name);
+           String reportsDirPath = getClass().getResource("/reportes").getPath();
            File reportsDir = new File(reportsDirPath);
            parametros.put(JRParameter.REPORT_FILE_RESOLVER, new SimpleFileResolver(reportsDir));
            JasperPrint jp = JasperFillManager.fillReport(jr, parametros,conexion.conecta);
@@ -39,7 +40,7 @@ public class reporteHistorialP extends ConexionDB{
            JRViewer jrv = myjrv;           
            return jrv;
         } catch (Exception e) {
-            System.out.println("Error " + e);
+            //System.out.println("Error " + e);
            return null;
         }
         

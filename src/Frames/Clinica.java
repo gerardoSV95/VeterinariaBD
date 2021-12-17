@@ -165,9 +165,7 @@ public class Clinica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTBL_historialP = new rojerusan.RSTableMetro();
         jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jPanel_Footer = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         rSLabelHora2 = new rojeru_san.rsdate.RSLabelHora();
         JLBL_Fecha1 = new rojeru_san.rsdate.RSLabelFecha();
         jLabel10 = new javax.swing.JLabel();
@@ -209,16 +207,15 @@ public class Clinica extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        JBTN_QuitarProducto = new rojeru_san.RSButtonRiple();
+        JBTN_Inicio = new rojeru_san.RSButtonRiple();
         jPanel5 = new javax.swing.JPanel();
         JBTN_BuscarP = new rojeru_san.RSButtonRiple();
         jPanel3 = new javax.swing.JPanel();
         JBTN_AddP = new rojeru_san.RSButtonRiple();
         jPanel4 = new javax.swing.JPanel();
-        JBTN_QuitarProducto1 = new rojeru_san.RSButtonRiple();
+        JBTN_SalirP = new rojeru_san.RSButtonRiple();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         rSLabelHora1 = new rojeru_san.rsdate.RSLabelHora();
         JLBL_Fecha = new rojeru_san.rsdate.RSLabelFecha();
@@ -320,14 +317,6 @@ public class Clinica extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Raleway", 0, 18)); // NOI18N
-        jButton5.setText("Descargar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -339,14 +328,9 @@ public class Clinica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jTextNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(60, 60, 60)))
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
                 .addGap(25, 25, 25))
         );
         jPanel10Layout.setVerticalGroup(
@@ -358,17 +342,11 @@ public class Clinica extends javax.swing.JFrame {
                     .addComponent(jTextNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(41, 41, 41)
+                .addGap(90, 90, 90)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
         );
 
         jPanel_Footer.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel9.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(109, 109, 109));
-        jLabel9.setText("NO. EMPLEADO:");
 
         rSLabelHora2.setForeground(new java.awt.Color(109, 109, 109));
         rSLabelHora2.setFont(new java.awt.Font("Roboto Bold", 1, 24)); // NOI18N
@@ -394,8 +372,6 @@ public class Clinica extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(JLBL_Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_FooterLayout.setVerticalGroup(
@@ -414,10 +390,6 @@ public class Clinica extends javax.swing.JFrame {
                             .addComponent(rSLabelHora2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JLBL_Fecha1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(9, 9, 9))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_FooterLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -748,20 +720,20 @@ public class Clinica extends javax.swing.JFrame {
 
         JPLN_Control.add(jPanel2);
 
-        JBTN_QuitarProducto.setBackground(new java.awt.Color(34, 41, 50));
-        JBTN_QuitarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_home.png"))); // NOI18N
-        JBTN_QuitarProducto.setText("Inicio");
-        JBTN_QuitarProducto.setColorHover(new java.awt.Color(54, 63, 73));
-        JBTN_QuitarProducto.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
-        JBTN_QuitarProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        JBTN_QuitarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        JBTN_QuitarProducto.setPreferredSize(new java.awt.Dimension(230, 40));
-        JBTN_QuitarProducto.addActionListener(new java.awt.event.ActionListener() {
+        JBTN_Inicio.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_home.png"))); // NOI18N
+        JBTN_Inicio.setText("Inicio");
+        JBTN_Inicio.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_Inicio.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_Inicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_Inicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_Inicio.setPreferredSize(new java.awt.Dimension(230, 40));
+        JBTN_Inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBTN_QuitarProductoActionPerformed(evt);
+                JBTN_InicioActionPerformed(evt);
             }
         });
-        JPLN_Control.add(JBTN_QuitarProducto);
+        JPLN_Control.add(JBTN_Inicio);
 
         jPanel5.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -838,20 +810,20 @@ public class Clinica extends javax.swing.JFrame {
 
         JPLN_Control.add(jPanel4);
 
-        JBTN_QuitarProducto1.setBackground(new java.awt.Color(34, 41, 50));
-        JBTN_QuitarProducto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_Exit.png"))); // NOI18N
-        JBTN_QuitarProducto1.setText("Salir");
-        JBTN_QuitarProducto1.setColorHover(new java.awt.Color(54, 63, 73));
-        JBTN_QuitarProducto1.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
-        JBTN_QuitarProducto1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        JBTN_QuitarProducto1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        JBTN_QuitarProducto1.setPreferredSize(new java.awt.Dimension(230, 40));
-        JBTN_QuitarProducto1.addActionListener(new java.awt.event.ActionListener() {
+        JBTN_SalirP.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_SalirP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_clinica/Icono_Exit.png"))); // NOI18N
+        JBTN_SalirP.setText("Salir");
+        JBTN_SalirP.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_SalirP.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_SalirP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        JBTN_SalirP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_SalirP.setPreferredSize(new java.awt.Dimension(230, 40));
+        JBTN_SalirP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBTN_QuitarProducto1ActionPerformed(evt);
+                JBTN_SalirPActionPerformed(evt);
             }
         });
-        JPLN_Control.add(JBTN_QuitarProducto1);
+        JPLN_Control.add(JBTN_SalirP);
 
         jPanel6.setBackground(new java.awt.Color(34, 41, 50));
 
@@ -868,13 +840,9 @@ public class Clinica extends javax.swing.JFrame {
 
         JPLN_Control.add(jPanel6);
 
-        jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 540));
+        jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 530));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(109, 109, 109));
-        jLabel6.setText("NO. EMPLEADO:");
 
         jTextField3.setBorder(null);
 
@@ -902,9 +870,7 @@ public class Clinica extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JLBL_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -917,9 +883,8 @@ public class Clinica extends javax.swing.JFrame {
                         .addComponent(jTextField3))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JLBL_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(JLBL_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -968,20 +933,20 @@ public class Clinica extends javax.swing.JFrame {
         jFrameIngresarP.setVisible(true);
     }//GEN-LAST:event_JBTN_AddPActionPerformed
 
-    private void JBTN_QuitarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProductoActionPerformed
+    private void JBTN_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_InicioActionPerformed
             this.dispose();
-    }//GEN-LAST:event_JBTN_QuitarProductoActionPerformed
+    }//GEN-LAST:event_JBTN_InicioActionPerformed
 
-    private void JBTN_QuitarProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_QuitarProducto1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JBTN_QuitarProducto1ActionPerformed
+    private void JBTN_SalirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_SalirPActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JBTN_SalirPActionPerformed
 
     private void JTBL_historialPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTBL_historialPMouseClicked
 
     }//GEN-LAST:event_JTBL_historialPMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        hPaciente();
+        hPaciente();        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextNombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombrePActionPerformed
@@ -1005,11 +970,6 @@ public class Clinica extends javax.swing.JFrame {
         // TODO add your handling code here:
         jFrameIngresarP.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-            reporteHistorialPaciente rHP = new reporteHistorialPaciente(nombreP);
-            rHP.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1049,8 +1009,8 @@ public class Clinica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.RSButtonRiple JBTN_AddP;
     private rojeru_san.RSButtonRiple JBTN_BuscarP;
-    private rojeru_san.RSButtonRiple JBTN_QuitarProducto;
-    private rojeru_san.RSButtonRiple JBTN_QuitarProducto1;
+    private rojeru_san.RSButtonRiple JBTN_Inicio;
+    private rojeru_san.RSButtonRiple JBTN_SalirP;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha1;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha2;
@@ -1063,7 +1023,6 @@ public class Clinica extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboTMascota;
     private javax.swing.JComboBox<String> jComboTServicio;
     private javax.swing.JComboBox<String> jComboVacuna;
@@ -1090,10 +1049,8 @@ public class Clinica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;

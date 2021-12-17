@@ -20,7 +20,8 @@ public class reporteHistorialPaciente extends javax.swing.JFrame {
     public reporteHistorialPaciente(String name) {
         this.name = name;
         initComponents();
-        //conf();
+        conf();
+        System.out.println(this.name);
         jPanelReport.setLayout(new BorderLayout());
         reporteHistorialP rH = new reporteHistorialP();
         jPanelReport.add(rH.getHistorialP(name));

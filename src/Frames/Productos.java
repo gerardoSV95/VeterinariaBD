@@ -63,7 +63,6 @@ public class Productos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTBL_Productos = new rojerusan.RSTableMetro();
         jPanel_Footer = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jTexTotal = new javax.swing.JTextField();
         rSLabelHora1 = new rojeru_san.rsdate.RSLabelHora();
         JLBL_Fecha = new rojeru_san.rsdate.RSLabelFecha();
@@ -288,10 +287,6 @@ public class Productos extends javax.swing.JFrame {
 
         jPanel_Footer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(109, 109, 109));
-        jLabel6.setText("NO. EMPLEADO:");
-
         jTexTotal.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jTexTotal.setForeground(new java.awt.Color(109, 109, 109));
         jTexTotal.setBorder(null);
@@ -324,9 +319,7 @@ public class Productos extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17)
                 .addComponent(JLBL_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(99, 99, 99)
+                .addGap(223, 223, 223)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -351,9 +344,7 @@ public class Productos extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
             .addGroup(jPanel_FooterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -508,7 +499,6 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

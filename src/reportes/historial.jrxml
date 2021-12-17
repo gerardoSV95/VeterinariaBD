@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historial" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36b1cb7a-c1da-497e-ab8c-ced07b485da4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Veterinaria"/>
+	<parameter name="nombre_mascota" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "PACIENTE"."ID_PACIENTE",
+	"PACIENTE"."NOMBRE",
+	"PACIENTE"."EDAD",
+	"PACIENTE"."DIAGNOSTICO",
+	"PACIENTE"."MEDICINAS",
+	"VACUNA"."VACUNA",
+	"ESTANCIA"."DIAS_ESTANCIA",
+	"PACIENTE"."COSTO"
+FROM "PACIENTE"
+	JOIN "VACUNA" ON 
+	 "PACIENTE"."ID_VACUNA" = "VACUNA"."V_ID" 
+	JOIN "ESTANCIA" ON 
+	 "PACIENTE"."P_ID_ESTANCIA" = "ESTANCIA"."ID_ESTANCIA" 
+WHERE 
+	 "PACIENTE"."NOMBRE" = UPPER($P{nombre_mascota})]]>
+	</queryString>
+	<field name="ID_PACIENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ID_PACIENTE"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_PACIENTE"/>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="EDAD" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="EDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="EDAD"/>
+	</field>
+	<field name="DIAGNOSTICO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DIAGNOSTICO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIAGNOSTICO"/>
+	</field>
+	<field name="MEDICINAS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MEDICINAS"/>
+		<property name="com.jaspersoft.studio.field.label" value="MEDICINAS"/>
+	</field>
+	<field name="VACUNA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VACUNA"/>
+		<property name="com.jaspersoft.studio.field.label" value="VACUNA"/>
+	</field>
+	<field name="DIAS_ESTANCIA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="DIAS_ESTANCIA"/>
+		<property name="com.jaspersoft.studio.field.label" value="DIAS_ESTANCIA"/>
+	</field>
+	<field name="COSTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="COSTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="COSTO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="79" forecolor="#FFFFFF" backcolor="#A0C8EB" uuid="b6b81a05-be58-411c-9641-47f9e2bcc3a0">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[Historial]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="72" height="30" backcolor="#A0C8EB" uuid="b281c276-b000-4300-9b6b-8f34106989ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce99bdfc-ac4c-4ae5-a7ca-5fa9fac1d560"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[ID PACIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="72" y="0" width="69" height="30" backcolor="#A0C8EB" uuid="38114f32-646d-40ed-8389-47e6d319dac8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a065a936-a507-46a5-b91f-f1d7f231c336"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="141" y="0" width="59" height="30" backcolor="#A0C8EB" uuid="dac4c43c-1276-4ea7-a552-66150ba42c40">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ff79a6c-4f10-40f2-a05b-9acd19a7558a"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[EDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="0" width="80" height="30" backcolor="#A0C8EB" uuid="adb8bbac-5c52-4875-8463-016a49eefe62">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2de36c63-9f2c-4461-bea0-712fb509cc7b"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="280" y="0" width="69" height="30" backcolor="#A0C8EB" uuid="af4befce-dad0-4f97-85b7-579fec94dddd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f5fd14e6-a49a-432a-995a-6f946be603e9"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[MEDICINAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="349" y="0" width="69" height="30" backcolor="#A0C8EB" uuid="696a42d6-1a25-4266-a4d3-bcad5a316573">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a96ac17d-6976-4915-bd82-36fd52375602"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[VACUNA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="418" y="0" width="82" height="30" backcolor="#A0C8EB" uuid="0219ee7b-55d1-423a-98ad-40e6fb13a46a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d4212e7-606e-4172-b23d-001b27d428df"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[DIAS ESTANCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="0" width="55" height="30" backcolor="#A0C8EB" uuid="3c09f9ed-2036-484c-9550-c840fc66324e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9105e569-4b96-4f22-9461-5513dcaae037"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[COSTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="72" height="30" uuid="bc10656c-c4cf-457f-a1ac-7807a680f3ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ce99bdfc-ac4c-4ae5-a7ca-5fa9fac1d560"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID_PACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="0" width="69" height="30" uuid="ca80edee-264e-49a9-b7c4-6b1ad502274c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a065a936-a507-46a5-b91f-f1d7f231c336"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="59" height="30" uuid="a7ee1b30-ad2d-4340-a270-260b04a98ec2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ff79a6c-4f10-40f2-a05b-9acd19a7558a"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="80" height="30" uuid="6b529c22-c918-4a6e-94c4-77ee6144a69c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2de36c63-9f2c-4461-bea0-712fb509cc7b"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIAGNOSTICO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="69" height="30" uuid="768656c0-ca6d-4f34-bf9e-b3ad1404c2db">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f5fd14e6-a49a-432a-995a-6f946be603e9"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MEDICINAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="0" width="69" height="30" uuid="66306481-ac42-4db4-a20b-c24d9ba21142">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a96ac17d-6976-4915-bd82-36fd52375602"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VACUNA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="0" width="82" height="30" uuid="389c815d-7fb5-404f-b0f6-131e3b05b1fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d4212e7-606e-4172-b23d-001b27d428df"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIAS_ESTANCIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="55" height="30" uuid="52da368b-3665-40f6-9469-331ffbf856ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9105e569-4b96-4f22-9461-5513dcaae037"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COSTO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="70" backcolor="#A0C8EB" uuid="f974bc81-a8a4-49b6-bbe5-48b428392241"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="40" width="40" height="30" uuid="a85f6876-0cbb-40d9-8540-fd3610a75f5b"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="455" y="40" width="100" height="30" uuid="c6990724-d556-46aa-88d6-af94246f65b4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

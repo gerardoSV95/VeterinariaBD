@@ -226,7 +226,6 @@ public class Ventas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTBL_Ventas = new rojerusan.RSTableMetro();
         jPanel_Footer = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jTexTotal = new javax.swing.JTextField();
         rSLabelHora1 = new rojeru_san.rsdate.RSLabelHora();
         JLBL_Fecha = new rojeru_san.rsdate.RSLabelFecha();
@@ -236,14 +235,15 @@ public class Ventas extends javax.swing.JFrame {
         JPNL_Encabezado = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         JPLN_Control = new javax.swing.JPanel();
-        JBTN_Buscar = new rojeru_san.RSButtonRiple();
         JBTN_CobrarVenta = new rojeru_san.RSButtonRiple();
         JBTN_QuitarProducto = new rojeru_san.RSButtonRiple();
         JBTN_Cancelar = new rojeru_san.RSButtonRiple();
+        JBTN_Buscar = new rojeru_san.RSButtonRiple();
         jScrollPane2 = new javax.swing.JScrollPane();
         JTBL_Productos = new rojerusan.RSTableMetro();
         jLabel2 = new javax.swing.JLabel();
         jTextCantidad = new javax.swing.JTextField();
+        JBTN_RegresarFP = new rojeru_san.RSButtonRiple();
 
         jDialogFCompra.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogFCompra.setSize(new java.awt.Dimension(810, 600));
@@ -678,10 +678,6 @@ public class Ventas extends javax.swing.JFrame {
 
         jPanel_Footer.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(109, 109, 109));
-        jLabel6.setText("NO. EMPLEADO:");
-
         jTexTotal.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jTexTotal.setForeground(new java.awt.Color(109, 109, 109));
         jTexTotal.setBorder(null);
@@ -719,9 +715,7 @@ public class Ventas extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17)
                 .addComponent(JLBL_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(99, 99, 99)
+                .addGap(223, 223, 223)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTexTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -746,9 +740,7 @@ public class Ventas extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
             .addGroup(jPanel_FooterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -777,19 +769,6 @@ public class Ventas extends javax.swing.JFrame {
         jPanel1.add(JPNL_Encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, -1));
 
         JPLN_Control.setBackground(new java.awt.Color(255, 255, 255));
-
-        JBTN_Buscar.setBackground(new java.awt.Color(34, 41, 50));
-        JBTN_Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/Icono_Buscar.png"))); // NOI18N
-        JBTN_Buscar.setText("Agregar Producto");
-        JBTN_Buscar.setColorHover(new java.awt.Color(54, 63, 73));
-        JBTN_Buscar.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
-        JBTN_Buscar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        JBTN_Buscar.setMinimumSize(new java.awt.Dimension(219, 29));
-        JBTN_Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBTN_BuscarActionPerformed(evt);
-            }
-        });
 
         JBTN_CobrarVenta.setBackground(new java.awt.Color(34, 41, 50));
         JBTN_CobrarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/Icono_Caja.png"))); // NOI18N
@@ -827,33 +806,44 @@ public class Ventas extends javax.swing.JFrame {
             }
         });
 
+        JBTN_Buscar.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img_Ventas/Icono_Buscar.png"))); // NOI18N
+        JBTN_Buscar.setText("Agregar Producto");
+        JBTN_Buscar.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_Buscar.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_Buscar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_Buscar.setMinimumSize(new java.awt.Dimension(219, 29));
+        JBTN_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_BuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPLN_ControlLayout = new javax.swing.GroupLayout(JPLN_Control);
         JPLN_Control.setLayout(JPLN_ControlLayout);
         JPLN_ControlLayout.setHorizontalGroup(
             JPLN_ControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPLN_ControlLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(JBTN_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JBTN_CobrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JBTN_QuitarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JBTN_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         JPLN_ControlLayout.setVerticalGroup(
             JPLN_ControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPLN_ControlLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(JPLN_ControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPLN_ControlLayout.createSequentialGroup()
-                        .addGroup(JPLN_ControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JBTN_QuitarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JBTN_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JBTN_CobrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(JBTN_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(JPLN_ControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBTN_QuitarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBTN_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBTN_CobrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBTN_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(JPLN_Control, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 890, -1));
@@ -903,7 +893,7 @@ public class Ventas extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jLabel2.setText("CANTIDAD");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
         jTextCantidad.setFont(new java.awt.Font("Raleway", 1, 14)); // NOI18N
         jTextCantidad.addActionListener(new java.awt.event.ActionListener() {
@@ -916,7 +906,20 @@ public class Ventas extends javax.swing.JFrame {
                 jTextCantidadPropertyChange(evt);
             }
         });
-        jPanel1.add(jTextCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, 40, 30));
+        jPanel1.add(jTextCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 40, 30));
+
+        JBTN_RegresarFP.setBackground(new java.awt.Color(34, 41, 50));
+        JBTN_RegresarFP.setText("Regresar");
+        JBTN_RegresarFP.setColorHover(new java.awt.Color(54, 63, 73));
+        JBTN_RegresarFP.setFont(new java.awt.Font("Raleway Medium", 0, 18)); // NOI18N
+        JBTN_RegresarFP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        JBTN_RegresarFP.setMinimumSize(new java.awt.Dimension(219, 29));
+        JBTN_RegresarFP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBTN_RegresarFPActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JBTN_RegresarFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, 110, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1062,6 +1065,10 @@ public class Ventas extends javax.swing.JFrame {
         jDialogRCliente.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void JBTN_RegresarFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBTN_RegresarFPActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_JBTN_RegresarFPActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1105,6 +1112,7 @@ public class Ventas extends javax.swing.JFrame {
     private rojeru_san.RSButtonRiple JBTN_Cancelar;
     private rojeru_san.RSButtonRiple JBTN_CobrarVenta;
     private rojeru_san.RSButtonRiple JBTN_QuitarProducto;
+    private rojeru_san.RSButtonRiple JBTN_RegresarFP;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_Fecha1;
     public static rojeru_san.rsdate.RSLabelFecha JLBL_FechaRC;
@@ -1148,7 +1156,6 @@ public class Ventas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

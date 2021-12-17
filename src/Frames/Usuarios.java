@@ -85,7 +85,7 @@ public class Usuarios extends javax.swing.JFrame {
         fecha = JLBL_Fecha1.getFecha();
         
         try {
-            String consulta = "SELECT MAX (EMPLEADO_ID)+1 FROM EMPLEADO";
+            String consulta = "SELECT MAX (ID_EMPLEADO)+1 FROM EMPLEADO";
             PreparedStatement ps = conexion.conecta.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
@@ -576,11 +576,12 @@ public class Usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jTexTotal1PropertyChange
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
+        jFrameNewUsr.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         nuevoUsr();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
